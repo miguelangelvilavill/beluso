@@ -9,13 +9,18 @@
     <title>Turismo Beluso Bueu</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;600;800&display=swap" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="icon" type="image/webp" href="/assets/icons/icon-48.webp" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
   <body>
 
 
     <!-- Contenedor Principal (Bloqueado a tamaño móvil) -->
     <div id="app">
+      <audio id="bg-music" loop src="/assets/Musica/App.mp3"></audio>
+      
+      <button id="btn-music-toggle" class="music-toggle-btn" title="Música de fondo">
+        <i class="fas fa-volume-high"></i>
+      </button>
 
 
 
@@ -43,13 +48,12 @@
         </div>
         <div class="weather-character" id="weather-char">
           <div class="mascot-container" id="mascot">
-            <!-- El contenido se generará por CSS según la clase del widget -->
             <div class="mascot-body"></div>
-            <div class="mascot-arm left"></div>
-            <div class="mascot-arm right"></div>
             <div class="mascot-face">
-              <div class="mascot-eye left"></div>
-              <div class="mascot-eye right"></div>
+              <div class="mascot-eyes-container">
+                <div class="mascot-eye left"></div>
+                <div class="mascot-eye right"></div>
+              </div>
               <div class="mascot-mouth"></div>
             </div>
           </div>

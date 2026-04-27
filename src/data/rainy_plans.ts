@@ -23,7 +23,7 @@ export const RAINY_PLANS: RainyPlan[] = [
     ],
     hint: 'Sumerge en la historia conservera de Galicia.',
     routeCoords: [
-      { lat: 42.3320, lng: -8.8143, name: 'A Meudiña (Inicio)' },
+      { lat: 42.3320, lng: -8.8143, name: 'A Miudiña' },
       { lat: 42.3268, lng: -8.7852, name: 'Museo Massó' },
       { lat: 42.3275, lng: -8.7845, name: 'Puerto de Bueu' }
     ]
@@ -41,7 +41,7 @@ export const RAINY_PLANS: RainyPlan[] = [
     ],
     hint: 'La mejor forma de "pasar" la tarde refugiado en buen ambiente.',
     routeCoords: [
-      { lat: 42.3320, lng: -8.8143, name: 'A Meudiña (Inicio)' },
+      { lat: 42.3320, lng: -8.8143, name: 'A Miudiña' },
       { lat: 42.3265, lng: -8.7855, name: 'Centro de Bueu' },
       { lat: 42.2642, lng: -8.7843, name: 'Casco Viejo Cangas' }
     ]
@@ -59,7 +59,7 @@ export const RAINY_PLANS: RainyPlan[] = [
     ],
     hint: 'Para cuando el cuerpo pide calma y paisaje.',
     routeCoords: [
-      { lat: 42.3320, lng: -8.8143, name: 'A Meudiña (Inicio)' },
+      { lat: 42.3320, lng: -8.8143, name: 'A Miudiña' },
       { lat: 42.2785, lng: -8.8250, name: 'Marina de Aldán' }
     ]
   },
@@ -76,7 +76,7 @@ export const RAINY_PLANS: RainyPlan[] = [
     ],
     hint: 'Ideal para parejas o un momento de autocuidado.',
     routeCoords: [
-      { lat: 42.3320, lng: -8.8143, name: 'A Meudiña (Inicio)' },
+      { lat: 42.3320, lng: -8.8143, name: 'A Miudiña' },
       { lat: 42.2858, lng: -8.7360, name: 'Spa Bienestar Moaña' }
     ]
   },

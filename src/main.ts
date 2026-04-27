@@ -46,7 +46,8 @@ const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => 
 // DEFAULT_POIS now imported from src/data/pois.ts
 document.addEventListener('DOMContentLoaded', () => {
   // --- 1. Inicialización del Mapa ---
-  const mapCenter: L.LatLngTuple = [DEFAULT_POIS[0].lat, DEFAULT_POIS[0].lng];
+  const initialPoi = DEFAULT_POIS.find(p => p.id === 'poi-amiudiña') || DEFAULT_POIS[0];
+  const mapCenter: L.LatLngTuple = [initialPoi.lat, initialPoi.lng];
   const map = L.map('map', {
     zoomControl: false,
     attributionControl: false
@@ -299,30 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadLayout();
 
-  const loadPOIs = () => {
-    const data = localStorage.getItem(STORAGE_KEY);
-    if (data) {
-      let stored: POI[] = JSON.parse(data);
-
-      // CORRECCIÓN DE DEPRECACIÓN: Eliminar puntos antiguos o de prueba (ej: Praia do Pozo)
-      stored = stored.filter(p => 
-        !p.id.includes('pedron') && 
-        !p.id.includes('sartaxens') && 
-        !p.name.includes('Pozo') &&
-        p.description && p.description.length > 10
-      );
-
-      // Usar la versión guardada de los puntos por defecto si existe
-      pois = DEFAULT_POIS.map(def => {
-        const found = stored.find(s => s.id === def.id);
-        return found ? found : def;
-      });
-      // Añadir cualquier punto personalizado
-      const customPoints = stored.filter(s => !DEFAULT_POIS.find(d => d.id === s.id));
-      pois = [...pois, ...customPoints];
-    }
-  };
-
   const savePOIs = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(pois));
   };
@@ -380,7 +357,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const carouselCounter = document.getElementById('carousel-counter') as HTMLElement;
   const poiDistance = document.getElementById('poi-distance') as HTMLElement;
   const btnGoogleMaps = document.getElementById('btn-google-maps') as HTMLButtonElement;
-
   const btnToggleFavorite = document.getElementById('btn-toggle-favorite') as HTMLButtonElement;
   const btnCloseBottomSheet = document.getElementById('btn-close-bottom-sheet') as HTMLButtonElement;
 
@@ -500,12 +476,12 @@ document.addEventListener('DOMContentLoaded', () => {
     bottomSheet.classList.add('open');
     map.setView([poi.lat, poi.lng], map.getZoom() > 13 ? map.getZoom() : 14);
 
-    // Calcular y mostrar distancia desde A Meudiña
-  const meudina = pois.find(p => p.id === 'poi-amiudiña');
-    if (meudina && poi.id !== meudina.id) {
-      const dist = getDistance(meudina.lat, meudina.lng, poi.lat, poi.lng);
+    // Calcular y mostrar distancia desde A Miudiña
+  const miudina = pois.find(p => p.id === 'poi-amiudiña');
+    if (miudina && poi.id !== miudina.id) {
+      const dist = getDistance(miudina.lat, miudina.lng, poi.lat, poi.lng);
       if (poiDistance) {
-        poiDistance.innerText = `A ${dist.toFixed(2)} km de A Meudiña`;
+        poiDistance.innerText = `A ${dist.toFixed(2)} km de A Miudiña`;
         poiDistance.style.display = 'block';
       }
     } else {
@@ -624,8 +600,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Admin toggle removed: admin mode is permanently disabled
-
-
   navMareas?.addEventListener('click', (e) => {
     e.preventDefault();
     setActiveNav(navMareas);
@@ -650,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isRouteMode = true; // Siempre forzamos el modo ruta (el usuario puede salir con la X ahora)
     setActiveNav(navMiRuta);
     closeBottomSheet();
-    // Cargar ruta guardada o empezar desde A Meudiña si es nueva
+    // Cargar ruta guardada o empezar desde A Miudiña si es nueva
     if (customRoutePoints.length === 0) {
       const savedRoute = localStorage.getItem(ROUTE_STORAGE_KEY);
       if (savedRoute) {
@@ -661,8 +635,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (_) {}
       }
       if (customRoutePoints.length === 0) {
-        const meudina = pois.find(p => p.id === 'poi-amiudiña');
-        if (meudina) customRoutePoints.push(meudina);
+        const miudina = pois.find(p => p.id === 'poi-amiudiña');
+        if (miudina) customRoutePoints.push(miudina);
       }
     }
     
@@ -673,8 +647,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnClearRoute?.addEventListener('click', () => {
     customRoutePoints = [];
-    const meudina = pois.find(p => p.id === 'poi-amiudiña');
-    if (meudina) customRoutePoints.push(meudina);
+    const miudina = pois.find(p => p.id === 'poi-amiudiña');
+    if (miudina) customRoutePoints.push(miudina);
     updateRoutePolyline();
     closeBottomSheet();
   });
@@ -1346,48 +1320,47 @@ document.addEventListener('DOMContentLoaded', () => {
   closeOnBackdrop(routesListModal, () => routesListModal.classList.add('hidden'));
   closeOnBackdrop(planesModal, () => planesModal.classList.add('hidden'));
 
-  let isFunnyState = false;
-  const triggerFunnyState = () => {
-    if (weatherWidget.classList.contains('extreme') || isFunnyState) return;
-    
-    isFunnyState = true;
-    weatherWidget.classList.add('funny');
-    
-    // Partículas dinámicas según el clima actual
-    let type: 'sun' | 'cloud' | 'heart' | 'sparkle' = 'heart';
-    if (currentWeather === 'sunny') type = 'heart';
-    else if (currentWeather === 'cloudy') type = 'cloud';
-    else if (currentWeather === 'rain' || currentWeather === 'thunder') type = 'sparkle';
+  // --- 9. Lógica de Interacción con el Espíritu del Tiempo ---
+  let moodClicks = 0;
+  let moodTimeout: number | null = null;
+  let resetMoodTimeout: number | null = null;
 
-    for(let i=0; i<6; i++) {
-      setTimeout(() => createParticle(type), i * 150);
-    }
+  const triggerMood = (mood: 'laugh' | 'angry' | 'annoyed' | 'fury') => {
+    weatherWidget.classList.remove('mood-laugh', 'mood-angry', 'mood-annoyed', 'mood-fury');
+    void (weatherWidget as any).offsetWidth;
+    weatherWidget.classList.add(`mood-${mood}`);
 
-    setTimeout(() => {
-      weatherWidget.classList.remove('funny');
-      isFunnyState = false;
-    }, 2500);
+    if (resetMoodTimeout) clearTimeout(resetMoodTimeout);
+    resetMoodTimeout = window.setTimeout(() => {
+      weatherWidget.classList.remove('mood-laugh', 'mood-angry', 'mood-annoyed', 'mood-fury');
+      moodClicks = 0;
+    }, mood === 'fury' ? 5000 : 3000);
   };
 
-  // Prevenir dobles clics o eventos al tocar en móviles (touchend + click)
-  weatherWidget.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Disparar gestos visuales en el personaje
-    const charEl = document.getElementById('weather-char');
-    if (charEl) {
-      const gestures = ['gesture-jump', 'gesture-shake', 'gesture-arm-up'];
-      const randomGesture = gestures[Math.floor(Math.random() * gestures.length)];
-      
-      charEl.classList.remove(...gestures);
-      void (charEl as any).offsetWidth; // Force reflow
-      charEl.classList.add(randomGesture);
-      
-      setTimeout(() => charEl.classList.remove(randomGesture), 1000);
-    }
+  const mascotContainer = document.getElementById('mascot');
 
-    triggerFunnyState();
+  weatherWidget.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    if (!weatherDetailsModal.classList.contains('hidden')) return;
+
+    // Detectar si se clickea el personaje
+    const isMascotClick = mascotContainer && (e.target === mascotContainer || mascotContainer.contains(e.target as Node));
+    // Detectar si se clickea la información
+    const infoContainer = document.querySelector('.weather-info');
+    const isInfoClick = infoContainer && (e.target === infoContainer || infoContainer.contains(e.target as Node));
+
+    if (isMascotClick) {
+      moodClicks++;
+      if (moodTimeout) clearTimeout(moodTimeout);
+      moodTimeout = window.setTimeout(() => {
+        if (moodClicks >= 4) triggerMood('fury');
+        else if (moodClicks === 3) triggerMood('angry');
+        else if (moodClicks === 2) triggerMood('annoyed');
+        else triggerMood('laugh');
+      }, 250);
+    } else if (isInfoClick) {
+      weatherDetailsModal.classList.remove('hidden');
+    }
   });
 
   // Lógica de cambio de pestañas
@@ -1440,13 +1413,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="time">P: ${tToday.high} | B: ${tToday.low}</div>
         </div>
       `;
-
-      // Actualizar info en el botón de navegación eliminado por petición
-      /* const navInfo = document.getElementById('nav-mareas-info');
-      if (navInfo) {
-        navInfo.innerText = `🌊 P: ${tToday.high}`;
-      } */
-
       // Preparar simulación para el gráfico
       const todayHourly: number[] = [];
       const epoch = new Date('2024-04-01T03:00:00').getTime();
@@ -1576,7 +1542,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(msg);
   });
 
-  loadPOIs();
+  // loadPOIs(); // Deshabilitado para forzar que todos los dispositivos usen siempre DEFAULT_POIS
   renderMarkers();
   fetchRealWeather();
   populateRealTides();
@@ -1592,4 +1558,44 @@ document.addEventListener('DOMContentLoaded', () => {
     if (weatherFetchInterval) clearInterval(weatherFetchInterval);
     if (extremeTimeout) clearTimeout(extremeTimeout);
   });
+  // --- 10. Lógica de Música de Fondo ---
+  const bgMusic = document.getElementById('bg-music') as HTMLAudioElement;
+  const musicToggleBtn = document.getElementById('btn-music-toggle');
+  let musicStarted = false;
+
+  const startMusic = () => {
+    if (musicStarted || !bgMusic) return;
+    bgMusic.volume = 0.1; // 10% de volumen
+    bgMusic.play().then(() => {
+      musicStarted = true;
+      musicToggleBtn?.classList.remove('muted');
+    }).catch(err => console.log("Audio play blocked:", err));
+  };
+
+  // Intentar empezar música al primer toque
+  document.addEventListener('click', startMusic, { once: true });
+  document.addEventListener('touchstart', startMusic, { once: true });
+
+  musicToggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!bgMusic) return;
+    
+    const icon = musicToggleBtn.querySelector('i');
+    if (bgMusic.paused) {
+      bgMusic.play();
+      musicToggleBtn.classList.remove('muted');
+      if (icon) {
+        icon.classList.remove('fa-volume-xmark');
+        icon.classList.add('fa-volume-high');
+      }
+    } else {
+      bgMusic.pause();
+      musicToggleBtn.classList.add('muted');
+      if (icon) {
+        icon.classList.remove('fa-volume-high');
+        icon.classList.add('fa-volume-xmark');
+      }
+    }
+  });
+
 });

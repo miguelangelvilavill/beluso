@@ -156,7 +156,7 @@ export const DEFAULT_POIS: POI[] = [
     "id": "poi-amiudiña",
     "lat": 42.3220508,
     "lng": -8.8125377,
-    "name": "A Miudiña (La Casa)",
+    "name": "A Miudiña",
     "description": "Nuestra casa y el corazón de tu estancia en Beluso. El punto de partida ideal para explorar todas las maravillas de la zona.",
     "category": "inicio",
     "imgUrls": [
