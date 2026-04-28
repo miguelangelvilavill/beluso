@@ -45,7 +45,6 @@ const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => 
 
 // DEFAULT_POIS now imported from src/data/pois.ts
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("DEFAULT_POIS loaded:", DEFAULT_POIS);
   // --- 0. Lógica de Pantalla de Inicio (Splash Screen) ---
   const splashScreen = document.getElementById('splash-screen');
   const splashVideo = document.getElementById('splash-video') as HTMLVideoElement;
@@ -59,20 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (splashVideo) {
-    console.log("Splash video element found:", splashVideo.src);
-    splashVideo.volume = 1.0;
-    splashVideo.addEventListener('ended', hideSplash);
-    
-    // Forzar reproducción al cargar
-    const attemptPlay = () => {
-      splashVideo.play().catch(() => {
-        console.log("Autoplay blocked, waiting for interaction...");
-        // Si se bloquea, lo intentamos al primer clic en cualquier parte
-        document.addEventListener('click', () => splashVideo.play(), { once: true });
-      });
+    // Intentar reproducir (el atributo muted en HTML asegura que empiece)
+    splashVideo.play().catch(() => {
+      console.log("Autoplay con sonido bloqueado por el navegador, reproduciendo en silencio...");
+    });
+
+    // Al primer clic del usuario en la pantalla, activamos el sonido
+    const unmute = () => {
+      splashVideo.muted = false;
+      splashVideo.volume = 1.0;
+      document.removeEventListener('click', unmute);
+      document.removeEventListener('touchstart', unmute);
     };
-    
-    attemptPlay();
+    document.addEventListener('click', unmute);
+    document.addEventListener('touchstart', unmute);
+
+    splashVideo.addEventListener('ended', hideSplash);
   }
   
   if (splashSkip) {
