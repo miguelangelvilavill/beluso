@@ -45,6 +45,38 @@ const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => 
 
 // DEFAULT_POIS now imported from src/data/pois.ts
 document.addEventListener('DOMContentLoaded', () => {
+  // --- 0. Lógica de Pantalla de Inicio (Splash Screen) ---
+  const splashScreen = document.getElementById('splash-screen');
+  const splashVideo = document.getElementById('splash-video') as HTMLVideoElement;
+  const splashSkip = document.getElementById('splash-skip');
+
+  const hideSplash = () => {
+    if (splashScreen) {
+      splashScreen.classList.add('hidden');
+      if (splashVideo) splashVideo.pause();
+    }
+  };
+
+  if (splashVideo) {
+    splashVideo.volume = 1.0;
+    splashVideo.addEventListener('ended', hideSplash);
+    
+    // Forzar reproducción al cargar
+    const attemptPlay = () => {
+      splashVideo.play().catch(e => {
+        console.log("Autoplay blocked, waiting for interaction...");
+        // Si se bloquea, lo intentamos al primer clic en cualquier parte
+        document.addEventListener('click', () => splashVideo.play(), { once: true });
+      });
+    };
+    
+    attemptPlay();
+  }
+  
+  if (splashSkip) {
+    splashSkip.addEventListener('click', hideSplash);
+  }
+
   // --- 1. Inicialización del Mapa ---
   const initialPoi = DEFAULT_POIS.find(p => p.id === 'poi-amiudiña') || DEFAULT_POIS[0];
   const mapCenter: L.LatLngTuple = [initialPoi.lat, initialPoi.lng];
@@ -1564,17 +1596,27 @@ document.addEventListener('DOMContentLoaded', () => {
   let musicStarted = false;
 
   const startMusic = () => {
-    if (musicStarted || !bgMusic) return;
-    bgMusic.volume = 0.1; // 10% de volumen
+    // No empezar la música si el splash screen aún es visible
+    if (musicStarted || !bgMusic || !splashScreen?.classList.contains('hidden')) return;
+    
+    bgMusic.volume = 0.1; 
     bgMusic.play().then(() => {
       musicStarted = true;
       musicToggleBtn?.classList.remove('muted');
     }).catch(err => console.log("Audio play blocked:", err));
   };
 
-  // Intentar empezar música al primer toque
-  document.addEventListener('click', startMusic, { once: true });
-  document.addEventListener('touchstart', startMusic, { once: true });
+  // Intentar empezar música al primer toque DESPUÉS del splash
+  document.addEventListener('click', startMusic);
+  document.addEventListener('touchstart', startMusic);
+
+  // También intentar empezar al ocultar el splash si el usuario ya interactuó
+  const originalHideSplash = hideSplash;
+  // @ts-ignore
+  hideSplash = () => {
+    originalHideSplash();
+    setTimeout(startMusic, 500); // Pequeño delay tras el splash
+  };
 
   musicToggleBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
