@@ -9,5 +9,8 @@ export const CATEGORY_EMOJIS: Record<POICategory, string> = {
   senderos: '🥾',
   pesca: '🎣',
   urgencias: '🏥',
-  alquiler: '🚗'
+  alquiler: '🚗',
+  monumento: '🗿',
+  parque: '🌳',
+  mirador: '🔭'
 };

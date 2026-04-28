@@ -1,4 +1,6 @@
-export type POICategory = 'playa' | 'restaurante' | 'museo' | 'inicio' | 'generico' | 'senderos' | 'pesca' | 'urgencias' | 'alquiler';
+export type POICategory = 'playa' | 'restaurante' | 'museo' | 'inicio' | 'generico' | 'senderos' | 'pesca' | 'urgencias' | 'alquiler' | 'monumento' | 'parque' | 'mirador';
+
+
 
 export interface POI {
   id: string;
