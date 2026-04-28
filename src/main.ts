@@ -1,3 +1,4 @@
+import { Capacitor } from '@capacitor/core';
 import './style.css';
 import L from 'leaflet';
 import { DEFAULT_POIS } from './data/pois';
@@ -62,6 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     splashVideo.play().catch(() => {
       console.log("Autoplay con sonido bloqueado por el navegador, reproduciendo en silencio...");
     });
+
+    // En la APK nativa podemos forzar el sonido si el WebView lo permite
+    if (Capacitor.isNativePlatform()) {
+      splashVideo.muted = false;
+      splashVideo.volume = 1.0;
+    }
 
     // Al primer clic del usuario en la pantalla, activamos el sonido
     const unmute = () => {
