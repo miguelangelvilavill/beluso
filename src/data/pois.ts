@@ -89,7 +89,9 @@ export const DEFAULT_POIS: POI[] = [
     "description": "Local popular en Bueu ideal para disfrutar de raciones y buen ambiente social.",
     "category": "restaurante",
     "imgUrls": [
-      "/assets/pois/A Esmorga/nuevo-local-marzo-2017.jpg"
+      "/assets/pois/A Esmorga/nuevo-local-marzo-2017.jpg",
+      "/assets/pois/A Esmorga/menu-del-dia-risotto.jpg",
+      "/assets/pois/A Esmorga/menu-del-dia-ternera.jpg"
     ]
   },
   {
@@ -101,6 +103,8 @@ export const DEFAULT_POIS: POI[] = [
     "category": "restaurante",
     "imgUrls": [
       "/assets/pois/Asador Grellada/terraza.jpg",
+      "/assets/pois/Asador Grellada/celebraciones-especiales.jpg",
+      "/assets/pois/Asador Grellada/todo-muy-rico-y-abundante.jpg",
       "/assets/pois/Asador Grellada/photo0jpg.jpg"
     ]
   },
@@ -113,6 +117,9 @@ export const DEFAULT_POIS: POI[] = [
     "category": "restaurante",
     "imgUrls": [
       "/assets/pois/Casa Benito/casa-benito.jpg",
+      "/assets/pois/Casa Benito/caption.jpg",
+      "/assets/pois/Casa Benito/caption (1).jpg",
+      "/assets/pois/Casa Benito/caption (2).jpg",
       "/assets/pois/Casa Benito/photo0jpg.jpg"
     ]
   },
@@ -124,7 +131,11 @@ export const DEFAULT_POIS: POI[] = [
     "description": "Cervecería y restaurante con estilo actual. Cocina cuidada y ambiente agradable en el centro de Bueu.",
     "category": "restaurante",
     "imgUrls": [
-      "/assets/pois/La Perfecta/la-perfecta.jpg"
+      "/assets/pois/La Perfecta/la-perfecta.jpg",
+      "/assets/pois/La Perfecta/la-perfecta (1).jpg",
+      "/assets/pois/La Perfecta/la-perfecta (2).jpg",
+      "/assets/pois/La Perfecta/la-perfecta (3).jpg",
+      "/assets/pois/La Perfecta/la-perfecta (4).jpg"
     ]
   },
   {
@@ -136,7 +147,11 @@ export const DEFAULT_POIS: POI[] = [
     "category": "restaurante",
     "imgUrls": [
       "/assets/pois/La Zarzamora/la-zarzamora.jpg",
-      "/assets/pois/La Zarzamora/photo0jpg.jpg"
+      "/assets/pois/La Zarzamora/bacalao-a-baja-temperatura.jpg",
+      "/assets/pois/La Zarzamora/ensalada-de-aguacate.jpg",
+      "/assets/pois/La Zarzamora/hamburguesa-con-muuuucho.jpg",
+      "/assets/pois/La Zarzamora/la-zarzamora (1).jpg",
+      "/assets/pois/La Zarzamora/la-zarzamora (2).jpg"
     ]
   },
   {
@@ -148,7 +163,10 @@ export const DEFAULT_POIS: POI[] = [
     "category": "restaurante",
     "imgUrls": [
       "/assets/pois/Noite Tapas/noite-tapas.jpg",
-      "/assets/pois/Noite Tapas/photo5jpg.jpg"
+      "/assets/pois/Noite Tapas/croquetas-de-espinacas.jpg",
+      "/assets/pois/Noite Tapas/caption.jpg",
+      "/assets/pois/Noite Tapas/caption (1).jpg",
+      "/assets/pois/Noite Tapas/caption (2).jpg"
     ]
   },
   {
@@ -159,7 +177,11 @@ export const DEFAULT_POIS: POI[] = [
     "description": "Establecimiento local con ambiente social, ideal para disfrutar de consumiciones en el centro.",
     "category": "restaurante",
     "imgUrls": [
-      "/assets/pois/O Farol/o-farol.jpg"
+      "/assets/pois/O Farol/o-farol.jpg",
+      "/assets/pois/O Farol/pizza-de-pulpo-surgio.jpg",
+      "/assets/pois/O Farol/tabla-de-patatas-6-salsas.jpg",
+      "/assets/pois/O Farol/o-farol (1).jpg",
+      "/assets/pois/O Farol/caption.jpg"
     ]
   },
   {
@@ -183,19 +205,23 @@ export const DEFAULT_POIS: POI[] = [
     "category": "playa",
     "imgUrls": [
       "/assets/pois/Area do Bon/1.jpg",
-      "/assets/pois/Area do Bon/2.jpg"
+      "/assets/pois/Area do Bon/2.jpg",
+      "/assets/pois/Area do Bon/3.jpg"
     ]
   },
   {
     "id": "poi-cabo-udra",
-    "lat": 42.3425,
-    "lng": -8.8238,
+    "lat": 42.341194,
+    "lng": -8.834861,
     "name": "Cabo Udra",
     "description": "Mirador natural con sendas entre rocas y vistas espectaculares de la ría. Espacio protegido de gran valor ecológico.",
     "category": "playa",
     "imgUrls": [
+      "/assets/pois/Cabo Udra/chouzos.jpg",
+      "/assets/pois/Cabo Udra/cruceiro.jpg",
       "/assets/pois/Cabo Udra/1.jpg",
-      "/assets/pois/Cabo Udra/2.jpg"
+      "/assets/pois/Cabo Udra/2.jpg",
+      "/assets/pois/Cabo Udra/3.jpg"
     ]
   },
   {
@@ -219,7 +245,8 @@ export const DEFAULT_POIS: POI[] = [
     "category": "playa",
     "imgUrls": [
       "/assets/pois/Humedal de Escorregadoiro/1.jpg",
-      "/assets/pois/Humedal de Escorregadoiro/2.jpg"
+      "/assets/pois/Humedal de Escorregadoiro/2.jpg",
+      "/assets/pois/Humedal de Escorregadoiro/3.jpg"
     ]
   },
   {
@@ -231,7 +258,8 @@ export const DEFAULT_POIS: POI[] = [
     "category": "playa",
     "imgUrls": [
       "/assets/pois/Playa da Mourisca/1.jpg",
-      "/assets/pois/Playa da Mourisca/2.jpg"
+      "/assets/pois/Playa da Mourisca/2.jpg",
+      "/assets/pois/Playa da Mourisca/3.jpg"
     ]
   },
   {
@@ -243,7 +271,8 @@ export const DEFAULT_POIS: POI[] = [
     "category": "playa",
     "imgUrls": [
       "/assets/pois/Playa da Roiba/1.jpg",
-      "/assets/pois/Playa da Roiba/2.jpg"
+      "/assets/pois/Playa da Roiba/2.jpg",
+      "/assets/pois/Playa da Roiba/3.jpg"
     ]
   },
   {
@@ -279,7 +308,8 @@ export const DEFAULT_POIS: POI[] = [
     "category": "playa",
     "imgUrls": [
       "/assets/pois/Playa de Pedrón/1.jpg",
-      "/assets/pois/Playa de Pedrón/2.jpg"
+      "/assets/pois/Playa de Pedrón/2.jpg",
+      "/assets/pois/Playa de Pedrón/3.jpg"
     ]
   },
   {
@@ -302,7 +332,8 @@ export const DEFAULT_POIS: POI[] = [
     "category": "playa",
     "imgUrls": [
       "/assets/pois/Playa de Tuia/1.jpg",
-      "/assets/pois/Playa de Tuia/2.jpg"
+      "/assets/pois/Playa de Tuia/2.jpg",
+      "/assets/pois/Playa de Tuia/3.jpg"
     ]
   },
   {
@@ -313,7 +344,9 @@ export const DEFAULT_POIS: POI[] = [
     "description": "Playa de arena blanca con vistas privilegiadas a la Isla de Ons en la zona de Cabo Udra.",
     "category": "playa",
     "imgUrls": [
-      "/assets/pois/Praia de Lagos/105974scr_3fb901e888d0e43.jpg"
+      "/assets/pois/Praia de Lagos/105974scr_3fb901e888d0e43.jpg",
+      "/assets/pois/Praia de Lagos/107454scr_d96f10155de3122.jpg",
+      "/assets/pois/Praia de Lagos/95872scr_fc6ac388688cf6a.jpg"
     ]
   },
   {
@@ -325,7 +358,8 @@ export const DEFAULT_POIS: POI[] = [
     "category": "monumento",
     "imgUrls": [
       "/assets/pois/Puerto Beluso/1.jpg",
-      "/assets/pois/Puerto Beluso/2.jpg"
+      "/assets/pois/Puerto Beluso/2.jpg",
+      "/assets/pois/Puerto Beluso/3.jpg"
     ]
   },
   {

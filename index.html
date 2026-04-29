@@ -15,7 +15,7 @@
 
     <!-- ===== PANTALLA DE INICIO (SPLASH) ===== -->
     <div id="splash-screen">
-      <video id="splash-video" autoplay muted playsinline webkit-playsinline>
+      <video id="splash-video" autoplay playsinline webkit-playsinline>
         <source src="/assets/splash.mp4" type="video/mp4">
       </video>
       <button id="splash-skip">Saltar ›</button>
@@ -23,7 +23,7 @@
 
     <!-- Contenedor Principal (Bloqueado a tamaño móvil) -->
     <div id="app">
-      <audio id="bg-music" loop src="/assets/Musica/App.mp3"></audio>
+      <audio id="bg-music" autoplay loop src="/assets/Musica/App.mp3"></audio>
       
       <button id="btn-music-toggle" class="music-toggle-btn" title="Música de fondo">
         <i class="fas fa-volume-high"></i>
@@ -40,7 +40,6 @@
       </button>
 
       <!-- Contenedor de Capas del Mapa -->
-      <div id="map-layers-container"></div>
 
       <!-- Widget de Clima y Personaje -->
       <div class="weather-widget" id="weather-widget">

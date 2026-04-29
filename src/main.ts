@@ -59,64 +59,60 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (splashVideo) {
-    // Intentar reproducir (el atributo muted en HTML asegura que empiece)
-    splashVideo.play().catch(() => {
-      console.log("Autoplay con sonido bloqueado por el navegador, reproduciendo en silencio...");
-    });
+    // Intentar reproducción inmediata con sonido
+    splashVideo.muted = false;
+    splashVideo.volume = 1.0;
+    
+    const tryPlay = () => {
+      splashVideo.play().catch(e => {
+        console.warn("Autoplay bloqueado por el navegador:", e);
+        // Si falla, al menos lo dejamos en espera de un click como fallback
+        document.addEventListener('click', () => {
+          splashVideo.muted = false;
+          splashVideo.play();
+        }, { once: true });
+      });
+    };
 
-    // En la APK nativa podemos forzar el sonido si el WebView lo permite
+    tryPlay();
+
+    // En APK nativa ya está configurado para permitirlo
     if (Capacitor.isNativePlatform()) {
       splashVideo.muted = false;
-      splashVideo.volume = 1.0;
+      splashVideo.play().catch(() => {});
     }
-
-    // Al primer clic del usuario en la pantalla, activamos el sonido
-    const unmute = () => {
-      splashVideo.muted = false;
-      splashVideo.volume = 1.0;
-      document.removeEventListener('click', unmute);
-      document.removeEventListener('touchstart', unmute);
-    };
-    document.addEventListener('click', unmute);
-    document.addEventListener('touchstart', unmute);
 
     splashVideo.addEventListener('ended', hideSplash);
   }
   
   if (splashSkip) {
-    splashSkip.addEventListener('click', hideSplash);
+    splashSkip.addEventListener('click', () => {
+      hideSplash();
+    });
   }
 
-  // --- 1. Inicialización del Mapa ---
+  // --- 1. Inicialización del Mapa (Modo Satélite Profesional) ---
   const initialPoi = DEFAULT_POIS.find(p => p.id === 'poi-amiudina') || DEFAULT_POIS[0];
-  const mapCenter: L.LatLngTuple = initialPoi ? [initialPoi.lat, initialPoi.lng] : [42.3333, -8.8]; // Fallback coordinates
+  const mapCenter: L.LatLngTuple = initialPoi ? [initialPoi.lat, initialPoi.lng] : [42.3333, -8.8]; 
+  
   const map = L.map('map', {
     zoomControl: false,
-    attributionControl: false
-  }).setView(mapCenter, 14);
+    attributionControl: false,
+    maxBounds: L.latLngBounds([42.2, -8.9], [42.4, -8.7]), // Limitar a la zona de Beluso/Bueu
+    minZoom: 12
+  }).setView(mapCenter, 16);
 
-  const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19,
-    attribution: '&copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-  });
-  const roadmapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  });
+  // Google Maps Hybrid (Satélite con etiquetas de calles y lugares)
+  // lyrs=y: Híbrido, lyrs=s: Satélite puro, lyrs=m: Mapa normal
+  const satelliteLayer = L.tileLayer('http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+  }).addTo(map);
 
-  satelliteLayer.addTo(map);
-
-  const baseMaps = {
-    "Satélite": satelliteLayer,
-    "Mapa": roadmapLayer
-  };
-
-  const overlayMaps = {};
-
-  const layersControl = L.control.layers(baseMaps, overlayMaps, { position: 'topright' }).addTo(map);
+  // Eliminado el selector de capas para un diseño más limpio y profesional
   const layersContainer = document.getElementById('map-layers-container');
   if (layersContainer) {
-    layersContainer.appendChild(layersControl.getContainer()!);
+    layersContainer.style.display = 'none';
   }
 
   // --- 2. Gestión de Estado y Datos ---
@@ -1606,26 +1602,36 @@ document.addEventListener('DOMContentLoaded', () => {
   let musicStarted = false;
 
   const startMusic = () => {
-    // No empezar la música si el splash screen aún es visible
-    if (musicStarted || !bgMusic || !splashScreen?.classList.contains('hidden')) return;
+    if (musicStarted || !bgMusic) return;
     
+    // Si el splash screen sigue activo, esperamos a que se oculte
+    if (splashScreen && !splashScreen.classList.contains('hidden')) {
+      return;
+    }
+    
+    bgMusic.muted = false;
     bgMusic.volume = 0.1; 
     bgMusic.play().then(() => {
       musicStarted = true;
       musicToggleBtn?.classList.remove('muted');
-    }).catch(err => console.log("Audio play blocked:", err));
+    }).catch(err => {
+      console.warn("Música bloqueada:", err);
+      // Fallback: intentar al primer clic
+      document.addEventListener('click', () => {
+        if (!musicStarted) startMusic();
+      }, { once: true });
+    });
   };
 
-  // Intentar empezar música al primer toque DESPUÉS del splash
-  document.addEventListener('click', startMusic);
-  document.addEventListener('touchstart', startMusic);
+  // Intentar empezar música inmediatamente (el navegador decidirá si permite el autoplay)
+  startMusic();
 
-  // También intentar empezar al ocultar el splash si el usuario ya interactuó
+  // Asegurar que la música arranque al terminar el splash automáticamente
   const originalHideSplash = hideSplash;
   // @ts-ignore
   hideSplash = () => {
     originalHideSplash();
-    setTimeout(startMusic, 500); // Pequeño delay tras el splash
+    setTimeout(startMusic, 100);
   };
 
   musicToggleBtn?.addEventListener('click', (e) => {
