@@ -1923,3 +1923,52 @@ body.admin-mode #map {
 body.admin-mode .emoji-marker:hover span {
   transform: scale(1.2);
 }
+
+/* Botón de Descarga APK */
+.download-apk-btn {
+  position: absolute;
+  bottom: calc(max(20px, env(safe-area-inset-bottom)) + 155px);
+  right: 20px;
+  background: var(--primary-gradient);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 8px 25px var(--primary-glow);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.download-apk-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px var(--primary-glow);
+}
+
+.download-apk-btn:active {
+  transform: scale(0.95);
+}
+
+.download-icon {
+  font-size: 18px;
+}
+
+@media (max-width: 480px) {
+  .download-text {
+    display: none;
+  }
+  .download-apk-btn {
+    width: 55px;
+    height: 55px;
+    justify-content: center;
+    padding: 0;
+  }
+  .download-icon {
+    font-size: 24px;
+  }
+}
