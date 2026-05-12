@@ -29,8 +29,8 @@
 #splash-screen {
   position: fixed;
   top: 0; left: 0;
-  width: 100vw; height: 100dvh;
-  background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+  width: 100vw; height: 100vh;
+  background: #020617;
   z-index: 99999;
   display: flex;
   align-items: center;

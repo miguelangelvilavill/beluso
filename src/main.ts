@@ -46,7 +46,7 @@ const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => 
 
 // DEFAULT_POIS now imported from src/data/pois.ts
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 0. LÃ³gica de Pantalla de Inicio (Splash Screen) ---
+  // --- 0. Lógica de Pantalla de Inicio (Splash Screen) ---
   const splashScreen = document.getElementById('splash-screen');
   const splashVideo = document.getElementById('splash-video') as HTMLVideoElement;
   const splashSkip = document.getElementById('splash-skip');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnShareRoute = document.getElementById('btn-share-route') as HTMLButtonElement;
   const btnLocateMe = document.getElementById('btn-locate-me') as HTMLButtonElement;
 
-  // --- 2.0 LÃ³gica de GeolocalizaciÃ³n del Usuario ---
+  // --- 2.0 Lógica de GeolocalizaciÃ³n del Usuario ---
   let userMarker: L.Marker | null = null;
   let isFirstLocation = true;
   let prevLat = 0;
@@ -1001,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (detailView) detailView.classList.add('hidden');
   });
 
-  // LÃ³gica de pestaÃ±as para el modal de planes
+  // Lógica de pestaÃ±as para el modal de planes
   const planeTabBtns = document.querySelectorAll('.plane-tab-btn');
   const planeTabContents = document.querySelectorAll('.plane-tab-content');
 
@@ -1139,7 +1139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- LÃ³gica de Eventos ---
+  // --- Lógica de Eventos ---
   const eventsModal = document.getElementById('events-modal') as HTMLElement;
   const eventsList = document.getElementById('events-list') as HTMLElement;
   const btnCloseEvents = document.getElementById('btn-close-events') as HTMLElement;
@@ -1411,7 +1411,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
-  // --- 8. LÃ³gica ClimÃ¡tica Avanzada ---
+  // --- 8. Lógica ClimÃ¡tica Avanzada ---
   const setupDragScroll = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -1466,7 +1466,7 @@ document.addEventListener('DOMContentLoaded', () => {
   closeOnBackdrop(routesListModal, () => routesListModal.classList.add('hidden'));
   closeOnBackdrop(planesModal, () => planesModal.classList.add('hidden'));
 
-  // --- 9. LÃ³gica de InteracciÃ³n con el EspÃ­ritu del Tiempo ---
+  // --- 9. Lógica de InteracciÃ³n con el EspÃ­ritu del Tiempo ---
   let moodClicks = 0;
   let moodTimeout: number | null = null;
   let resetMoodTimeout: number | null = null;
@@ -1509,7 +1509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // LÃ³gica de cambio de pestaÃ±as
+  // Lógica de cambio de pestaÃ±as
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
 
