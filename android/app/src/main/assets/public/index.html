@@ -4,21 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#5c6ac4" />
-    <link rel="icon" type="image/png" href="/icon.png" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="./assets/icon-BwjMu5dC.png" />
+    <link rel="manifest" href="./manifest.json" />
     <title>A Miudiña</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;600;800&display=swap" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <script type="module" crossorigin src="/assets/index-BYlQJdt6.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DZs9tlmZ.css">
+    <script type="module" crossorigin src="./assets/index-B-EaHD8P.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Ce-V5DE3.css">
   </head>
   <body>
 
     <!-- ===== PANTALLA DE INICIO (SPLASH) ===== -->
     <div id="splash-screen">
       <video id="splash-video" autoplay playsinline webkit-playsinline>
-        <source src="/assets/splash.mp4" type="video/mp4">
+        <source src="./assets/splash.mp4" type="video/mp4">
       </video>
       <button id="splash-skip">Saltar ›</button>
     </div>
@@ -104,9 +104,15 @@
 
       <!-- Admin controls removed: admin mode is disabled for a professional UI -->
 
+      <!-- Botón de Descarga APK -->
+      <a href="./A_Miudiña.apk" download id="btn-download-apk" class="download-apk-btn" title="Descargar Aplicación">
+        <span class="download-icon">🤖</span>
+        <span class="download-text">Instalar App</span>
+      </a>
+
       <!-- Botón de Mi Ubicación -->
       <button id="btn-locate-me" class="locate-me-btn" title="Mi Ubicación">
-        <img src="/assets/Animacion/belusin1.png" alt="Locate" style="width: 100%; height: 100%; object-fit: contain;" />
+        <img src="./assets/Animacion/belusin1.png" alt="Locate" style="width: 100%; height: 100%; object-fit: contain;" />
       </button>
 
       <div id="route-overlay" class="route-info-overlay hidden">
