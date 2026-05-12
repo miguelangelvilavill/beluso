@@ -8,6 +8,6 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
   },
-  // Base path relative for more flexibility
-  base: './',
+  // Base path for GitHub Pages
+  base: '/beluso/',
 });
