@@ -9,5 +9,5 @@ export default defineConfig({
     sourcemap: false,
   },
   // Base path relative for more flexibility
-  base: '/',
+  base: './',
 });

@@ -1,4 +1,4 @@
-:root {
+ï»¿:root {
   --primary: #6366f1;
   --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
   --primary-glow: rgba(99, 102, 241, 0.4);
@@ -1924,7 +1924,7 @@ body.admin-mode .emoji-marker:hover span {
   transform: scale(1.2);
 }
 
-/* Botón de Descarga APK */
+/* Botï¿½n de Descarga APK */
 .download-apk-btn {
   position: absolute;
   bottom: calc(max(20px, env(safe-area-inset-bottom)) + 155px);
