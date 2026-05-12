@@ -1,4 +1,4 @@
-// import { Capacitor } from '@capacitor/core';
+﻿// import { Capacitor } from '@capacitor/core';
 import './style.css';
 import L from 'leaflet';
 import { DEFAULT_POIS } from './data/pois';
@@ -20,7 +20,7 @@ const calculateTidesForDate = (date: Date) => {
   const cyclesSinceEpoch = diffHours / tideCycle;
   const cycleFraction = cyclesSinceEpoch - Math.floor(cyclesSinceEpoch);
 
-  // Calcular la próxima marea alta desde ahora
+  // Calcular la prÃ³xima marea alta desde ahora
   const hoursToNextHigh = (1 - cycleFraction) * tideCycle;
   const nextHigh = new Date(current + hoursToNextHigh * 60 * 60 * 1000);
   const nextLow = new Date(nextHigh.getTime() - (tideCycle / 2) * 60 * 60 * 1000);
@@ -46,7 +46,7 @@ const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => 
 
 // DEFAULT_POIS now imported from src/data/pois.ts
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 0. Lógica de Pantalla de Inicio (Splash Screen) ---
+  // --- 0. LÃ³gica de Pantalla de Inicio (Splash Screen) ---
   const splashScreen = document.getElementById('splash-screen');
   const splashVideo = document.getElementById('splash-video') as HTMLVideoElement;
   const splashSkip = document.getElementById('splash-skip');
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 1. Inicialización del Mapa (Modo Satélite Profesional) ---
+  // --- 1. InicializaciÃ³n del Mapa (Modo SatÃ©lite Profesional) ---
   const initialPoi = DEFAULT_POIS.find(p => p.id === 'poi-amiudina') || DEFAULT_POIS[0];
   const mapCenter: L.LatLngTuple = initialPoi ? [initialPoi.lat, initialPoi.lng] : [42.3333, -8.8]; 
   
@@ -94,20 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
     minZoom: 12
   }).setView(mapCenter, 16);
 
-  // Google Maps Hybrid (Satélite con etiquetas de calles y lugares)
-  // lyrs=y: Híbrido, lyrs=s: Satélite puro, lyrs=m: Mapa normal
+  // Google Maps Hybrid (SatÃ©lite con etiquetas de calles y lugares)
+  // lyrs=y: HÃ­brido, lyrs=s: SatÃ©lite puro, lyrs=m: Mapa normal
   L.tileLayer('https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
     maxZoom: 20,
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
   }).addTo(map);
 
-  // Eliminado el selector de capas para un diseño más limpio y profesional
+  // Eliminado el selector de capas para un diseÃ±o mÃ¡s limpio y profesional
   const layersContainer = document.getElementById('map-layers-container');
   if (layersContainer) {
     layersContainer.style.display = 'none';
   }
 
-  // --- 2. Gestión de Estado y Datos ---
+  // --- 2. GestiÃ³n de Estado y Datos ---
   const STORAGE_KEY = 'beluso_pois_v2';
   const ROUTE_STORAGE_KEY = 'beluso_saved_route_v1';
   const MULTI_ROUTES_KEY = 'beluso_multi_routes_v2';
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnShareRoute = document.getElementById('btn-share-route') as HTMLButtonElement;
   const btnLocateMe = document.getElementById('btn-locate-me') as HTMLButtonElement;
 
-  // --- 2.0 Lógica de Geolocalización del Usuario ---
+  // --- 2.0 LÃ³gica de GeolocalizaciÃ³n del Usuario ---
   let userMarker: L.Marker | null = null;
   let isFirstLocation = true;
   let prevLat = 0;
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     prevLat = latitude;
     prevLng = longitude;
 
-    const iconHtml = `<img src="/assets/Animacion/belusin_camina_${currentDirection}.gif" style="width: 50px; height: 50px; object-fit: contain; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));" />`;
+    const iconHtml = `<img src="assets/Animacion/belusin_camina_${currentDirection}.gif" style="width: 50px; height: 50px; object-fit: contain; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));" />`;
 
     if (!userMarker) {
       const userIcon = L.divIcon({
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // --- Simulación de Movimiento para pruebas (Teclado) ---
+  // --- SimulaciÃ³n de Movimiento para pruebas (Teclado) ---
   let simLat = mapCenter[0];
   let simLng = mapCenter[1];
   window.addEventListener('keydown', (e) => {
@@ -233,9 +233,9 @@ document.addEventListener('DOMContentLoaded', () => {
       navigator.geolocation.getCurrentPosition(
         (pos) => updateUserLocation(pos, true),
         (err) => {
-          let msg = 'No se pudo obtener tu ubicación.';
-          if (err.code === 1) msg = 'Permiso denegado. Activa el GPS o los permisos en la configuración de tu navegador/móvil.';
-          else if (err.code === 2) msg = 'Ubicación no disponible en este dispositivo.';
+          let msg = 'No se pudo obtener tu ubicaciÃ³n.';
+          if (err.code === 1) msg = 'Permiso denegado. Activa el GPS o los permisos en la configuraciÃ³n de tu navegador/mÃ³vil.';
+          else if (err.code === 2) msg = 'UbicaciÃ³n no disponible en este dispositivo.';
           else if (err.code === 3) msg = 'Tiempo de espera agotado al buscar el GPS.';
           alert(msg);
         },
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- 2.1 Gestión de Diseño Draggable ---
+  // --- 2.1 GestiÃ³n de DiseÃ±o Draggable ---
   const LAYOUT_KEY = 'beluso_ui_layout_v1';
   let uiLayout: { [id: string]: { top: string; left: string } } = {};
 
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // --- 3. Navegación Inferior e Interfaz de Detalles (Bottom Sheet) ---
+  // --- 3. NavegaciÃ³n Inferior e Interfaz de Detalles (Bottom Sheet) ---
   const bottomSheet = document.getElementById('bottom-sheet') as HTMLElement;
   const poiTitle = document.getElementById('poi-name') as HTMLElement;
   const poiDesc = document.getElementById('poi-desc') as HTMLElement;
@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateFavoriteButton = (poiId: string) => {
     if (!btnToggleFavorite) return;
     const isFav = favorites.includes(poiId);
-    btnToggleFavorite.innerText = isFav ? '❤️' : '🤍';
+    btnToggleFavorite.innerText = isFav ? 'â¤ï¸' : 'ðŸ¤';
     btnToggleFavorite.style.background = isFav ? 'rgba(239, 68, 68, 0.1)' : 'rgba(0,0,0,0.05)';
   };
 
@@ -609,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isRouteMode && poi.id !== 'poi-amiudina') {
-      btnAction.innerText = customRoutePoints.find(p => p.id === poi.id) ? 'Quitar de la Ruta' : 'Añadir a mi Ruta';
+      btnAction.innerText = customRoutePoints.find(p => p.id === poi.id) ? 'Quitar de la Ruta' : 'AÃ±adir a mi Ruta';
       btnAction.onclick = () => {
         togglePointInRoute(poi);
         openBottomSheet(poi); // Refrescar botones
@@ -626,12 +626,12 @@ document.addEventListener('DOMContentLoaded', () => {
     bottomSheet.classList.add('open');
     map.setView([poi.lat, poi.lng], map.getZoom() > 13 ? map.getZoom() : 14);
 
-    // Calcular y mostrar distancia desde A Miudiña
+    // Calcular y mostrar distancia desde A MiudiÃ±a
   const miudina = pois.find(p => p.id === 'poi-amiudina');
     if (miudina && poi.id !== miudina.id) {
       const dist = getDistance(miudina.lat, miudina.lng, poi.lat, poi.lng);
       if (poiDistance) {
-        poiDistance.innerText = `A ${dist.toFixed(2)} km de A Miudiña`;
+        poiDistance.innerText = `A ${dist.toFixed(2)} km de A MiudiÃ±a`;
         poiDistance.style.display = 'block';
       }
     } else {
@@ -672,7 +672,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnDeletePoi?.addEventListener('click', () => {
     const id = (document.getElementById('poi-id') as HTMLInputElement).value;
-    if (id && confirm('¿Seguro que quieres eliminar este punto?')) {
+    if (id && confirm('Â¿Seguro que quieres eliminar este punto?')) {
       pois = pois.filter(p => p.id !== id);
       savePOIs();
       renderMarkers();
@@ -750,7 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     setActiveNav(navMareas);
 
-    // Abrir modal en la pestaña de Mareas
+    // Abrir modal en la pestaÃ±a de Mareas
     weatherDetailsModal.classList.remove('hidden');
     const tidesTabBtn = document.querySelector('.tab-btn[data-tab="mareas"]') as HTMLElement;
     tidesTabBtn?.dispatchEvent(new Event('click'));
@@ -770,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isRouteMode = true; // Siempre forzamos el modo ruta (el usuario puede salir con la X ahora)
     setActiveNav(navMiRuta);
     closeBottomSheet();
-    // Cargar ruta guardada o empezar desde A Miudiña si es nueva
+    // Cargar ruta guardada o empezar desde A MiudiÃ±a si es nueva
     if (customRoutePoints.length === 0) {
       const savedRoute = localStorage.getItem(ROUTE_STORAGE_KEY);
       if (savedRoute) {
@@ -786,7 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    // Mostramos la interfaz de ruta y luego SIEMPRE abrimos el menú modal de rutas
+    // Mostramos la interfaz de ruta y luego SIEMPRE abrimos el menÃº modal de rutas
     updateRoutePolyline();
     openRoutesListModal();
   });
@@ -805,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (name) {
         savedRoutes.unshift({ name, pois: customRoutePoints.map(p => p.id) });
         localStorage.setItem(MULTI_ROUTES_KEY, JSON.stringify(savedRoutes));
-        alert('Ruta guardada con éxito.');
+        alert('Ruta guardada con Ã©xito.');
       }
     }
   });
@@ -823,7 +823,7 @@ document.addEventListener('DOMContentLoaded', () => {
     savedRoutesContainer.innerHTML = '';
     
     if (savedRoutes.length === 0) {
-      savedRoutesContainer.innerHTML = '<p style="text-align:center; color: var(--text-secondary); font-weight: 700; padding:20px;">No tienes rutas guardadas aún.</p>';
+      savedRoutesContainer.innerHTML = '<p style="text-align:center; color: var(--text-secondary); font-weight: 700; padding:20px;">No tienes rutas guardadas aÃºn.</p>';
     }
 
     savedRoutes.forEach((route, index) => {
@@ -838,10 +838,10 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div style="display:flex; gap:10px;">
             <button class="load-btn" style="background:var(--primary); color:white; border:none; padding:10px 16px; border-radius:14px; font-size:13px; font-weight:800; cursor:pointer; box-shadow:0 4px 12px rgba(37,99,235,0.4); display:flex; align-items:center; gap:6px; transition:transform 0.2s;">
-              <span>📍</span> Cargar
+              <span>ðŸ“</span> Cargar
             </button>
             <button class="delete-btn" style="background:rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.2); padding:10px 14px; border-radius:14px; font-size:14px; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center;">
-              🗑️
+              ðŸ—‘ï¸
             </button>
           </div>
         </div>
@@ -859,7 +859,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       card.querySelector('.delete-btn')?.addEventListener('click', () => {
-        if (confirm('¿Eliminar esta ruta?')) {
+        if (confirm('Â¿Eliminar esta ruta?')) {
           savedRoutes.splice(index, 1);
           localStorage.setItem(MULTI_ROUTES_KEY, JSON.stringify(savedRoutes));
           openRoutesListModal();
@@ -901,7 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const favPois = favorites.map(id => pois.find(p => p.id === id)).filter(Boolean) as POI[];
 
     if (favPois.length === 0) {
-      favoritesListContainer.innerHTML = '<p style="text-align:center; color: var(--text-secondary); font-weight: 700; padding:40px; opacity: 0.6;">No tienes favoritos guardados aún.</p>';
+      favoritesListContainer.innerHTML = '<p style="text-align:center; color: var(--text-secondary); font-weight: 700; padding:40px; opacity: 0.6;">No tienes favoritos guardados aÃºn.</p>';
       return;
     }
 
@@ -972,15 +972,15 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${plan.description}</p>
       </div>
 
-      <div class="plan-detail-section-title">¿Qué esperar de este plan?</div>
+      <div class="plan-detail-section-title">Â¿QuÃ© esperar de este plan?</div>
       <ul class="plan-detail-items">
-        ${plan.items.map(item => `<li><span>📍</span> ${item}</li>`).join('')}
+        ${plan.items.map(item => `<li><span>ðŸ“</span> ${item}</li>`).join('')}
       </ul>
 
       <div class="plan-detail-hint">
-        <span>✨</span>
+        <span>âœ¨</span>
         <div>
-          <strong style="display:block; margin-bottom: 2px;">Consejo Belusín:</strong>
+          <strong style="display:block; margin-bottom: 2px;">Consejo BelusÃ­n:</strong>
           ${plan.hint}
         </div>
       </div>
@@ -1001,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (detailView) detailView.classList.add('hidden');
   });
 
-  // Lógica de pestañas para el modal de planes
+  // LÃ³gica de pestaÃ±as para el modal de planes
   const planeTabBtns = document.querySelectorAll('.plane-tab-btn');
   const planeTabContents = document.querySelectorAll('.plane-tab-content');
 
@@ -1025,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (customRoutePoints.length > 1) {
       const routeNames = customRoutePoints.map((p, i) => `${i + 1}. ${p.name}`).join('\n');
       const distText = routeTotalDist?.innerText || '';
-      const shareText = `🗺️ Mi Ruta en Beluso (${distText}):\n\n${routeNames}\n\n📱 AppBeluso - Tu guía de turismo`;
+      const shareText = `ðŸ—ºï¸ Mi Ruta en Beluso (${distText}):\n\n${routeNames}\n\nðŸ“± AppBeluso - Tu guÃ­a de turismo`;
       if (navigator.share) {
         try {
           await navigator.share({ title: 'Mi Ruta en Beluso', text: shareText });
@@ -1034,7 +1034,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           await navigator.clipboard.writeText(shareText);
           const originalText = btnShareRoute.innerText;
-          btnShareRoute.innerText = '✅ Copiado';
+          btnShareRoute.innerText = 'âœ… Copiado';
           setTimeout(() => { btnShareRoute.innerText = originalText; }, 2000);
         } catch (_) {
           alert(shareText);
@@ -1120,7 +1120,7 @@ document.addEventListener('DOMContentLoaded', () => {
           routeTotalDist.innerText = `${totalDist.toFixed(2)} km`;
         }
       } catch (err) {
-        console.warn('Fallo OSRM, usando línea recta:', err);
+        console.warn('Fallo OSRM, usando lÃ­nea recta:', err);
         const latlngs = customRoutePoints.map(p => [p.lat, p.lng] as L.LatLngTuple);
         routeOutlinePolyline = L.polyline(latlngs, { color: '#FFFFFF', weight: 11, opacity: 0.5 }).addTo(map);
         routePolyline = L.polyline(latlngs, { color: '#FF5722', weight: 6, opacity: 0.95 }).addTo(map);
@@ -1139,7 +1139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- Lógica de Eventos ---
+  // --- LÃ³gica de Eventos ---
   const eventsModal = document.getElementById('events-modal') as HTMLElement;
   const eventsList = document.getElementById('events-list') as HTMLElement;
   const btnCloseEvents = document.getElementById('btn-close-events') as HTMLElement;
@@ -1155,7 +1155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (upcomingEvents.length === 0) {
-      eventsList.innerHTML = '<p style="text-align:center; color: var(--text-secondary); font-weight: 700; padding:20px;">No hay próximos eventos programados.</p>';
+      eventsList.innerHTML = '<p style="text-align:center; color: var(--text-secondary); font-weight: 700; padding:20px;">No hay prÃ³ximos eventos programados.</p>';
     }
 
     upcomingEvents.forEach(ev => {
@@ -1165,7 +1165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="date">${ev.date}</span>
         <span class="name">${ev.name}</span>
         <span class="desc">${ev.description}</span>
-        <small class="hint"><span>📍</span> Ver en Mapa</small>
+        <small class="hint"><span>ðŸ“</span> Ver en Mapa</small>
       `;
       card.onclick = () => {
         map.setView([ev.lat, ev.lng], 16, { animate: true });
@@ -1201,10 +1201,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const floatingTypes = ['heart', 'sparkle', 'sun', 'cloud'];
     if (floatingTypes.includes(type)) {
       particle.className = `heart-particle ${type}`;
-      let emoji = '❤️';
-      if (type === 'sparkle') emoji = '✨';
-      else if (type === 'sun') emoji = '☀️';
-      else if (type === 'cloud') emoji = '☁️';
+      let emoji = 'â¤ï¸';
+      if (type === 'sparkle') emoji = 'âœ¨';
+      else if (type === 'sun') emoji = 'â˜€ï¸';
+      else if (type === 'cloud') emoji = 'â˜ï¸';
       
       particle.innerText = emoji;
       particle.style.left = `${left}px`;
@@ -1309,23 +1309,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       applyWeatherState(state, desc, Math.round(temp));
       
-      // Actualizar info en el botón de navegación de Mareas (Solo marea, no clima por petición de usuario)
+      // Actualizar info en el botÃ³n de navegaciÃ³n de Mareas (Solo marea, no clima por peticiÃ³n de usuario)
       /* const navInfo = document.getElementById('nav-mareas-info');
       if (navInfo) {
-        navInfo.innerText = `${Math.round(temp)}°C | ${desc}`;
+        navInfo.innerText = `${Math.round(temp)}Â°C | ${desc}`;
       } */
 
 
       const mTemp = document.getElementById('modal-temp');
       const mDesc = document.getElementById('modal-desc');
       const mIcon = document.getElementById('modal-icon-emoji');
-      if (mTemp) mTemp.innerText = `${Math.round(temp)}°`;
+      if (mTemp) mTemp.innerText = `${Math.round(temp)}Â°`;
       if (mDesc) mDesc.innerText = desc;
       if (mIcon) {
-        let icon = '☀️';
-        if (state === 'rain') icon = '🌧️';
-        else if (state === 'thunder') icon = '⛈️';
-        else if (state === 'cloudy') icon = '🌥️';
+        let icon = 'â˜€ï¸';
+        if (state === 'rain') icon = 'ðŸŒ§ï¸';
+        else if (state === 'thunder') icon = 'â›ˆï¸';
+        else if (state === 'cloudy') icon = 'ðŸŒ¥ï¸';
         mIcon.innerText = icon;
       }
 
@@ -1348,15 +1348,15 @@ document.addEventListener('DOMContentLoaded', () => {
           const hTime = new Date(hEntry.time);
           const hTemp = Math.round(hEntry.data.instant.details.air_temperature);
           const hSym = hEntry.data.next_1_hours?.summary.symbol_code || "fair_day";
-          let hIcon = '☀️';
-          if (hSym.includes('rain')) hIcon = '🌧️';
-          else if (hSym.includes('cloud')) hIcon = '🌥️';
+          let hIcon = 'â˜€ï¸';
+          if (hSym.includes('rain')) hIcon = 'ðŸŒ§ï¸';
+          else if (hSym.includes('cloud')) hIcon = 'ðŸŒ¥ï¸';
 
           hHtml += `
             <div class="hourly-item ${i === 0 ? 'active' : ''}">
               <span class="time">${hTime.getHours()}:00</span>
               <span style="font-size:20px;">${hIcon}</span>
-              <span class="temp">${hTemp}°</span>
+              <span class="temp">${hTemp}Â°</span>
             </div>
           `;
         }
@@ -1385,14 +1385,14 @@ document.addEventListener('DOMContentLoaded', () => {
           const dTemp = Math.round(entry.data.instant.details.air_temperature);
           const dSym = entry.data.next_6_hours?.summary.symbol_code || "fair_day";
           const dayName = dDate.toLocaleDateString('es-ES', { weekday: 'short' });
-          let dIcon = '☀️';
-          if (dSym.includes('rain')) dIcon = '🌧️';
-          else if (dSym.includes('cloud')) dIcon = '🌥️';
+          let dIcon = 'â˜€ï¸';
+          if (dSym.includes('rain')) dIcon = 'ðŸŒ§ï¸';
+          else if (dSym.includes('cloud')) dIcon = 'ðŸŒ¥ï¸';
           dHtml += `
             <div class="daily-item">
               <span class="day">${dayName}</span>
               <span style="font-size:24px;">${dIcon}</span>
-              <span class="temp">${dTemp}°</span>
+              <span class="temp">${dTemp}Â°</span>
             </div>
           `;
         });
@@ -1406,12 +1406,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (e) {
       console.error("Fallo al actualizar el clima:", e);
-      applyWeatherState('cloudy', 'Error de conexión', '--');
+      applyWeatherState('cloudy', 'Error de conexiÃ³n', '--');
     }
   };
 
 
-  // --- 8. Lógica Climática Avanzada ---
+  // --- 8. LÃ³gica ClimÃ¡tica Avanzada ---
   const setupDragScroll = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -1466,7 +1466,7 @@ document.addEventListener('DOMContentLoaded', () => {
   closeOnBackdrop(routesListModal, () => routesListModal.classList.add('hidden'));
   closeOnBackdrop(planesModal, () => planesModal.classList.add('hidden'));
 
-  // --- 9. Lógica de Interacción con el Espíritu del Tiempo ---
+  // --- 9. LÃ³gica de InteracciÃ³n con el EspÃ­ritu del Tiempo ---
   let moodClicks = 0;
   let moodTimeout: number | null = null;
   let resetMoodTimeout: number | null = null;
@@ -1491,7 +1491,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Detectar si se clickea el personaje
     const isMascotClick = mascotContainer && (e.target === mascotContainer || mascotContainer.contains(e.target as Node));
-    // Detectar si se clickea la información
+    // Detectar si se clickea la informaciÃ³n
     const infoContainer = document.querySelector('.weather-info');
     const isInfoClick = infoContainer && (e.target === infoContainer || infoContainer.contains(e.target as Node));
 
@@ -1509,7 +1509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Lógica de cambio de pestañas
+  // LÃ³gica de cambio de pestaÃ±as
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
 
@@ -1523,7 +1523,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Cerrar bottom sheet al tocar en el mapa o añadir punto si es admin
+  // Cerrar bottom sheet al tocar en el mapa o aÃ±adir punto si es admin
   map.on('click', () => {
     closeBottomSheet();
   });
@@ -1546,7 +1546,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="time">P: ${tToday.high} | B: ${tToday.low}</div>
         </div>
       `;
-      // Preparar simulación para el gráfico
+      // Preparar simulaciÃ³n para el grÃ¡fico
       const todayHourly: number[] = [];
       const epoch = new Date('2024-04-01T03:00:00').getTime();
       const tideCycle = 12.42;
@@ -1565,7 +1565,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const dayAfter = new Date(); dayAfter.setDate(dayAfter.getDate() + 2);
 
       const nextDays = [
-        { day: 'Mañana', date: tomorrow },
+        { day: 'MaÃ±ana', date: tomorrow },
         { day: 'Pasado', date: dayAfter }
       ];
 
@@ -1581,7 +1581,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       tidesList.innerHTML = todayHtml + nextDaysHtml;
 
-      // Dibujo del gráfico
+      // Dibujo del grÃ¡fico
       const labelLayer = document.getElementById('tide-labels-layer');
       if (tidePath && labelLayer) {
         labelLayer.innerHTML = ''; // Limpiar etiquetas antiguas
@@ -1619,7 +1619,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pathData += " L 100 50 Z";
         tidePath.setAttribute('d', pathData);
 
-        // Resaltar Picos en el gráfico
+        // Resaltar Picos en el grÃ¡fico
         peaks.forEach(p => {
           const pt = points[p.hour];
           if (pt) {
