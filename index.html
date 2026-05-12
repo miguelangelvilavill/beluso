@@ -14,11 +14,30 @@
   <body>
 
     <!-- ===== PANTALLA DE INICIO (SPLASH) ===== -->
+    <!-- ===== GUÍA DE INSTALACIÓN INICIAL (SPLASH REPLACED) ===== -->
     <div id="splash-screen">
-      <video id="splash-video" autoplay playsinline webkit-playsinline>
-        <source src="./assets/splash.mp4" type="video/mp4">
-      </video>
-      <button id="splash-skip">Saltar ›</button>
+      <div class="splash-glass-card">
+        <div class="splash-icon">🤖</div>
+        <h1>Instala la App</h1>
+        <p class="splash-subtitle">Disfruta de una experiencia completa en tu móvil</p>
+        
+        <div class="install-steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <p>Pulsa el botón <b>"Instalar App"</b> para descargar el archivo.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <p>Abre el archivo descargado y concede permisos de instalación.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <p>Busca el icono de <b>A Miudiña</b> en tu pantalla de inicio.</p>
+          </div>
+        </div>
+
+        <button id="splash-skip" class="splash-btn-primary">Continuar a la Web</button>
+      </div>
     </div>
 
     <!-- Contenedor Principal (Bloqueado a tamaño móvil) -->
