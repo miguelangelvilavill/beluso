@@ -8,6 +8,6 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
   },
-  // Base path for GitHub Pages
-  base: '/beluso/',
+  // Base path for Vercel
+  base: '/',
 });
