@@ -1,0 +1,13 @@
+1321: const mIcon = document.getElementById('modal-icon-emoji');
+1324: if (mIcon) {
+1329: mIcon.innerText = icon;
+1351: let hIcon = '?';
+1352: if (hSym.includes('rain')) hIcon = '?';
+1353: else if (hSym.includes('cloud')) hIcon = '?';
+1356: <div class="hourly-item ${i === 0 ? 'active' : ''}">
+1358: <span style="font-size:20px;">${hIcon}</span>
+1388: let dIcon = '?';
+1389: if (dSym.includes('rain')) dIcon = '?';
+1390: else if (dSym.includes('cloud')) dIcon = '?';
+1392: <div class="daily-item">
+1394: <span style="font-size:24px;">${dIcon}</span>
