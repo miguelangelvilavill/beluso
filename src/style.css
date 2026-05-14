@@ -1683,6 +1683,8 @@ body.admin-mode #app-header:active {
   max-height: 480px;
   overflow-y: auto;
   padding-right: 8px;
+  padding-top: 40px;
+  padding-bottom: 24px;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
 }
@@ -1789,6 +1791,8 @@ body.admin-mode #app-header:active {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-top: 40px;
+  padding-bottom: 24px;
 }
 
 
