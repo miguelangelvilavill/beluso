@@ -1,4 +1,4 @@
-﻿import type { POI } from '../models/poi'
+import type { POI } from '../models/poi'
 
 export const DEFAULT_POIS: POI[] = [
   //Punto casa//
@@ -6,26 +6,26 @@ export const DEFAULT_POIS: POI[] = [
     "id": "poi-amiudina",
     "lat": 42.321876,
     "lng": -8.810883,
-    "name": "A MiudiÃ±a",
-    "description": "Nuestra casa y el corazón de tu estancia en Beluso. El punto de partida ideal para explorar todas las maravillas de la zona.",
+    "name": "A Miudiña",
+    "description": "Nuestra casa y el corazn de tu estancia en Beluso. El punto de partida ideal para explorar todas las maravillas de la zona.",
     "category": "inicio",
     "imgUrls": [
-      "assets/pois/Amiudiña/image_0.jpg", "assets/pois/Amiudiña/image_2.jpg",
-      "assets/pois/Amiudiña/image_3.jpg", "assets/pois/Amiudiña/image_4.jpg",
-      "assets/pois/Amiudiña/image_7.jpg", "assets/pois/Amiudiña/image_8.jpg",
-      "assets/pois/Amiudiña/image_9.jpg", "assets/pois/Amiudiña/image_10.jpg",
-      "assets/pois/Amiudiña/image_12.jpg", "assets/pois/Amiudiña/image_17.jpg",
-      "assets/pois/Amiudiña/image_18.jpg", "assets/pois/Amiudiña/image_22.jpg",
-      "assets/pois/Amiudiña/image_24.jpg", "assets/pois/Amiudiña/image_25.jpg",
-      "assets/pois/Amiudiña/image_26.jpg", "assets/pois/Amiudiña/image_27.jpg",
-      "assets/pois/Amiudiña/image_28.jpg", "assets/pois/Amiudiña/image_29.jpg",
-      "assets/pois/Amiudiña/image_31.jpg", "assets/pois/Amiudiña/image_33.jpg",
-      "assets/pois/Amiudiña/image_34.jpg", "assets/pois/Amiudiña/image_36.jpg",
-      "assets/pois/Amiudiña/image_37.jpg", "assets/pois/Amiudiña/image_38.jpg",
-      "assets/pois/Amiudiña/image_41.jpg", "assets/pois/Amiudiña/image_42.jpg",
-      "assets/pois/Amiudiña/image_43.jpg", "assets/pois/Amiudiña/image_44.jpg",
-      "assets/pois/Amiudiña/image_45.jpg", "assets/pois/Amiudiña/image_46.jpg",
-      "assets/pois/Amiudiña/image_48.jpg", "assets/pois/Amiudiña/image_49.jpg"
+      "assets/pois/Amiudia/image_0.jpg", "assets/pois/Amiudia/image_2.jpg",
+      "assets/pois/Amiudia/image_3.jpg", "assets/pois/Amiudia/image_4.jpg",
+      "assets/pois/Amiudia/image_7.jpg", "assets/pois/Amiudia/image_8.jpg",
+      "assets/pois/Amiudia/image_9.jpg", "assets/pois/Amiudia/image_10.jpg",
+      "assets/pois/Amiudia/image_12.jpg", "assets/pois/Amiudia/image_17.jpg",
+      "assets/pois/Amiudia/image_18.jpg", "assets/pois/Amiudia/image_22.jpg",
+      "assets/pois/Amiudia/image_24.jpg", "assets/pois/Amiudia/image_25.jpg",
+      "assets/pois/Amiudia/image_26.jpg", "assets/pois/Amiudia/image_27.jpg",
+      "assets/pois/Amiudia/image_28.jpg", "assets/pois/Amiudia/image_29.jpg",
+      "assets/pois/Amiudia/image_31.jpg", "assets/pois/Amiudia/image_33.jpg",
+      "assets/pois/Amiudia/image_34.jpg", "assets/pois/Amiudia/image_36.jpg",
+      "assets/pois/Amiudia/image_37.jpg", "assets/pois/Amiudia/image_38.jpg",
+      "assets/pois/Amiudia/image_41.jpg", "assets/pois/Amiudia/image_42.jpg",
+      "assets/pois/Amiudia/image_43.jpg", "assets/pois/Amiudia/image_44.jpg",
+      "assets/pois/Amiudia/image_45.jpg", "assets/pois/Amiudia/image_46.jpg",
+      "assets/pois/Amiudia/image_48.jpg", "assets/pois/Amiudia/image_49.jpg"
     ],
     "isInitial": true
   },
@@ -35,7 +35,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3327694,
     "lng": -8.800762,
     "name": "A Centoleira",
-    "description": "Restaurante centenario con profundas raÃ­ces marineras. Especialistas en mariscos de la rÃ­a y cocina atlÃ¡ntica frente al puerto.",
+    "description": "Restaurante centenario con profundas raíces marineras. Especialistas en mariscos de la ría y cocina atlántica frente al puerto.",
     "category": "restaurante",
     "imgUrls": [
       "assets/pois/A Centoleira/a-centoleira.jpg",
@@ -48,7 +48,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.33206,
     "lng": -8.80169,
     "name": "Restaurante Peixoto",
-    "description": "Local autÃ©ntico con producto fresco de la rÃ­a. Muy valorado por su calidad y vistas al muelle de Beluso.",
+    "description": "Local auténtico con producto fresco de la ría. Muy valorado por su calidad y vistas al muelle de Beluso.",
     "category": "restaurante",
     "imgUrls": [
       "assets/pois/Peixoto/restaurante-bar-peixoto.jpg",
@@ -99,7 +99,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3308794,
     "lng": -8.7741082,
     "name": "Casa Benito",
-    "description": "Conocido por sus carnes a la parrilla y pescados, con excelentes vistas a la rÃ­a y puestas de sol.",
+    "description": "Conocido por sus carnes a la parrilla y pescados, con excelentes vistas a la ría y puestas de sol.",
     "category": "restaurante",
     "imgUrls": [
       "assets/pois/Casa Benito/casa-benito.jpg",
@@ -114,7 +114,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3259719,
     "lng": 8.7857016,
     "name": "La Perfecta",
-    "description": "CervecerÃ­a y restaurante con estilo actual. Cocina cuidada y ambiente agradable en el centro de Bueu.",
+    "description": "Cervecería y restaurante con estilo actual. Cocina cuidada y ambiente agradable en el centro de Bueu.",
     "category": "restaurante",
     "imgUrls": [
       "assets/pois/La Perfecta/la-perfecta.jpg",
@@ -129,7 +129,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3264184,
     "lng": -8.7900436,
     "name": "La Zarzamora",
-    "description": "Cocina mediterrÃ¡nea en una atmÃ³sfera hogareÃ±a. Muy valorado por su servicio y calidad.",
+    "description": "Cocina mediterránea en una atmósfera hogareña. Muy valorado por su servicio y calidad.",
     "category": "restaurante",
     "imgUrls": [
       "assets/pois/La Zarzamora/la-zarzamora.jpg",
@@ -145,7 +145,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.323909,
     "lng": -8.785051,
     "name": "Noite Tapas",
-    "description": "Referente para tapear en Bueu con cocina creativa local. RÃºa do SantÃ¡n, 18.",
+    "description": "Referente para tapear en Bueu con cocina creativa local. Rúa do Santán, 18.",
     "category": "restaurante",
     "imgUrls": [
       "assets/pois/Noite Tapas/noite-tapas.jpg",
@@ -176,7 +176,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3143653,
     "lng": -8.8187907,
     "name": "Area do Bon",
-    "description": "Area de Bon Playa de arena gruesa, sitio para aparcar, duchas, baÃ±os y dos chiringuitos donde puedes llevar tu propia comida y pedir alli la bebida.",
+    "description": "Area de Bon Playa de arena gruesa, sitio para aparcar, duchas, baños y dos chiringuitos donde puedes llevar tu propia comida y pedir alli la bebida.",
     "category": "playa",
     "imgUrls": ["assets/pois/Area do Bon/1.jpg", "assets/pois/Area do Bon/2.jpg", "assets/pois/Area do Bon/3.jpg"]
   },
@@ -185,7 +185,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3391,
     "lng": -8.83911,
     "name": "Cabo Udra",
-    "description": "Cabo Udra Un mirador natural con multitud de sendas conectadas entre si que recorren todo el cabo entre rocas erosionadas por el viento, donde se juntan la RÃ­a de Pontevedra al norte, y la RÃ­a de AldÃ¡n al sur, y enfre...",
+    "description": "Cabo Udra Un mirador natural con multitud de sendas conectadas entre si que recorren todo el cabo entre rocas erosionadas por el viento, donde se juntan la Ría de Pontevedra al norte, y la Ría de Aldán al sur, y enfre...",
     "category": "playa",
     "imgUrls": ["assets/pois/Cabo Udra/1.jpg", "assets/pois/Cabo Udra/2.jpg", "assets/pois/Cabo Udra/3.jpg", "assets/pois/Cabo Udra/chouzos.jpg", "assets/pois/Cabo Udra/cruceiro.jpg"]
   },
@@ -194,7 +194,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.32947,
     "lng": -8.82517,
     "name": "Humedal de Escorregadoiro",
-    "description": "Este humedal forma parte de un sendero litoral de gran valor ecolÃ³gico, es perfecto para dar un paseo por la naturaleza por caminos que parecen sacados de cuento.",
+    "description": "Este humedal forma parte de un sendero litoral de gran valor ecológico, es perfecto para dar un paseo por la naturaleza por caminos que parecen sacados de cuento.",
     "category": "playa",
     "imgUrls": ["assets/pois/Humedal de Escorregadoiro/1.jpg", "assets/pois/Humedal de Escorregadoiro/2.jpg", "assets/pois/Humedal de Escorregadoiro/3.jpg"]
   },
@@ -203,7 +203,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3372,
     "lng": -8.8223,
     "name": "Praia da Mourisca",
-    "description": "Playa da Mourisca Esta playa de 300 m de longitud se encuentra a las puertas del espacio protegido de Cabo Udra. De agua frÃ­a y arena gruesa, enmarcada entre rocas y rodeada de Ã¡rboles, tiene un sencillo chiringuito p...",
+    "description": "Playa da Mourisca Esta playa de 300 m de longitud se encuentra a las puertas del espacio protegido de Cabo Udra. De agua fría y arena gruesa, enmarcada entre rocas y rodeada de árboles, tiene un sencillo chiringuito p...",
     "category": "playa",
     "imgUrls": ["assets/pois/Playa da Mourisca/1.jpg", "assets/pois/Playa da Mourisca/2.jpg", "assets/pois/Playa da Mourisca/3.jpg"]
   },
@@ -212,7 +212,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.20088,
     "lng": -8.47585,
     "name": "Praia da Roiba",
-    "description": "De arena fina y gris, en entorno semiurbano y cerca del puerto de Beluso. Se encuentra bastante resguardada, lo que hace que el agua estÃ© tranquila y con poco oleaje y abrigada del viento.",
+    "description": "De arena fina y gris, en entorno semiurbano y cerca del puerto de Beluso. Se encuentra bastante resguardada, lo que hace que el agua esté tranquila y con poco oleaje y abrigada del viento.",
     "category": "playa",
     "imgUrls": ["assets/pois/Playa da Roiba/1.jpg", "assets/pois/Playa da Roiba/2.jpg", "assets/pois/Playa da Roiba/3.jpg"]
   },
@@ -221,7 +221,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.33397,
     "lng": -8.82686,
     "name": "Playa de Ancoradouro",
-    "description": "Playa de Ancoradouro Es una pequeÃ±a playa de poco mÃ¡s de 100 metros de longitud rodeada de rocas a la que se accede por un camino de tierra desde el aparcamiento de Cabo Udra, quizÃ¡ un poco dificultoso para niÃ±os pequ...",
+    "description": "Playa de Ancoradouro Es una pequeña playa de poco más de 100 metros de longitud rodeada de rocas a la que se accede por un camino de tierra desde el aparcamiento de Cabo Udra, quizá un poco dificultoso para niños pequ...",
     "category": "playa",
     "imgUrls": ["assets/pois/Playa de Ancoradouro/1.jpg", "assets/pois/Playa de Ancoradouro/2.jpg", "assets/pois/Playa de Ancoradouro/3.jpg"]
   },
@@ -230,7 +230,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3303954,
     "lng": -8.7977766,
     "name": "Playa de Beluso",
-    "description": "Playa de Beluso Playa urbana entre el puerto deportivo y el pueblo de Beluso. Buena accesibilidad, aparcamiento es gratuito y la playa tranquila para ir en familia y con niÃ±os, aunque la arena pueda resultar un poco g...",
+    "description": "Playa de Beluso Playa urbana entre el puerto deportivo y el pueblo de Beluso. Buena accesibilidad, aparcamiento es gratuito y la playa tranquila para ir en familia y con niños, aunque la arena pueda resultar un poco g...",
     "category": "playa",
     "imgUrls": ["assets/pois/Playa de Beluso/1.jpg", "assets/pois/Playa de Beluso/2.jpg"]
   },
@@ -238,17 +238,17 @@ export const DEFAULT_POIS: POI[] = [
     "id": "poi-pedron",
     "lat": 42.34050,
     "lng": -8.82625,
-    "name": "Playa de PedrÃ³n",
-    "description": "La playa de PedrÃ³n es una playa virgen, de difÃ­cil acceso y tradicionalmente nudista, pero recogida, rodeada de naturaleza y en un entorno privilegiado.",
+    "name": "Playa de Pedrón",
+    "description": "La playa de Pedrón es una playa virgen, de difícil acceso y tradicionalmente nudista, pero recogida, rodeada de naturaleza y en un entorno privilegiado.",
     "category": "playa",
-    "imgUrls": ["assets/pois/Playa de PedrÃ³n/1.jpg", "assets/pois/Playa de PedrÃ³n/2.jpg", "assets/pois/Playa de PedrÃ³n/3.jpg"]
+    "imgUrls": ["assets/pois/Playa de Pedrón/1.jpg", "assets/pois/Playa de Pedrón/2.jpg", "assets/pois/Playa de Pedrón/3.jpg"]
   },
   {
     "id": "poi-sartesens",
     "lat": 42.33811,
     "lng": -8.80732,
     "name": "Playa de Sartesens",
-    "description": "Playa de Sartaxens Es una playa tradicionalmente nudista, rocosa y con arena blanca. Lugar Ãºnico y solitario de difÃ­cil acceso, muy escondida en un entorno forestal, rodeada de piedras y Ã¡rboles.",
+    "description": "Playa de Sartaxens Es una playa tradicionalmente nudista, rocosa y con arena blanca. Lugar único y solitario de difícil acceso, muy escondida en un entorno forestal, rodeada de piedras y árboles.",
     "category": "playa",
     "imgUrls": ["assets/pois/Playa de Sartesens/1.jpg"]
   },
@@ -257,7 +257,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.33814,
     "lng": -8.81375,
     "name": "Playa de Tulla",
-    "description": "Playa de Tuia Esta playa de gran tamaÃ±o se encuentra en un entorno forestal y rural, rodeada de bosque, un poco escondida y de difÃ­cil acceso, ya que la carretera es estrecha, pero precisamente esa dificultad hace que...",
+    "description": "Playa de Tuia Esta playa de gran tamaño se encuentra en un entorno forestal y rural, rodeada de bosque, un poco escondida y de difícil acceso, ya que la carretera es estrecha, pero precisamente esa dificultad hace que...",
     "category": "playa",
     "imgUrls": ["assets/pois/Playa de Tuia/1.jpg", "assets/pois/Playa de Tuia/2.jpg", "assets/pois/Playa de Tuia/3.jpg"]
   },
@@ -266,7 +266,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.32471,
     "lng": -8.82549,
     "name": "Praia de Lagos",
-    "description": "Playa de Lagos, a 4 minutos en coche desde la casa, es una playa pequeÃ±a de arena blanca que pertenece a la zona protegida del Cabo de Udra. Desde allÃ­ podemos ver al fondo la Isla de Ons del Parque Natural de las Isl...",
+    "description": "Playa de Lagos, a 4 minutos en coche desde la casa, es una playa pequeña de arena blanca que pertenece a la zona protegida del Cabo de Udra. Desde allí podemos ver al fondo la Isla de Ons del Parque Natural de las Isl...",
     "category": "playa",
     "imgUrls": ["assets/pois/Praia de Lagos/105974scr_3fb901e888d0e43.jpg", "assets/pois/Praia de Lagos/107454scr_d96f10155de3122.jpg", "assets/pois/Praia de Lagos/95872scr_fc6ac388688cf6a.jpg"]
   },
@@ -276,7 +276,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3270,
     "lng": -8.7891,
     "name": "Playa Banda do Rio",
-    "description": "Playa Banda do Rio En el centro de Bueu, es un arenal con zona de fondeo y servicios cercanos, ideal para familias y muy concurrida en verano al ser un lugar cÃ©ntrico. Como curiosidad, se encuentran los restos de una ...",
+    "description": "Playa Banda do Rio En el centro de Bueu, es un arenal con zona de fondeo y servicios cercanos, ideal para familias y muy concurrida en verano al ser un lugar céntrico. Como curiosidad, se encuentran los restos de una ...",
     "category": "playa",
     "imgUrls": ["assets/pois/Playa Banda do Rio/1.jpg", "assets/pois/Playa Banda do Rio/2.jpg", "assets/pois/Playa Banda do Rio/3.jpg"]
   },
@@ -286,8 +286,8 @@ export const DEFAULT_POIS: POI[] = [
     "id": "poi-museo-masso",
     "lat": 42.3269595,
     "lng": -8.7850828,
-    "name": "Museo MassÃ³",
-    "description": "Museo MassÃ³ Cerca del puerto de Bueu se encuentra el Museo MassÃ³, en las naves industriales de la antigua conservera MassÃ³. La entrada es gratuita y se exponen objetos de navegaciÃ³n maquetas de barcos, documentos hist...",
+    "name": "Museo Massó",
+    "description": "Museo Massó Cerca del puerto de Bueu se encuentra el Museo Massó, en las naves industriales de la antigua conservera Massó. La entrada es gratuita y se exponen objetos de navegación maquetas de barcos, documentos hist...",
     "category": "museo",
     "imgUrls": ["assets/pois/Museo Masso/1.jpg", "assets/pois/Museo Masso/2.jpg", "assets/pois/Museo Masso/3.jpg", "assets/pois/Museo Masso/4.jpg"]
   },
@@ -296,7 +296,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 43.34321,
     "lng": 5.93603,
     "name": "Capilla Santos Reyes",
-    "description": "En caso de que te apetezca conocer un poco mÃ¡s de nuestro patrimonio, a 7 minutos en coche se encuentra esta pequeÃ±a capilla dedicada a los Reyes Magos. Aunque la actual es del s.XX, la original es del aÃ±o 1686.",
+    "description": "En caso de que te apetezca conocer un poco más de nuestro patrimonio, a 7 minutos en coche se encuentra esta pequeña capilla dedicada a los Reyes Magos. Aunque la actual es del s.XX, la original es del año 1686.",
     "category": "museo",
     "imgUrls": ["assets/pois/Capilla Santos Reyes/1.jpg", "assets/pois/Capilla Santos Reyes/2.jpg"]
   },
@@ -304,8 +304,8 @@ export const DEFAULT_POIS: POI[] = [
     "id": "poi-iglesia-beluso",
     "lat": 42.333374,
     "lng": 8.805767,
-    "name": "Iglesia de San XoÃ¡n de Beluso",
-    "description": "Iglesia parroquial romÃ¡nica del siglo XII, centro espiritual de la aldea de Beluso. Edificio de gran valor histÃ³rico.",
+    "name": "Iglesia de San Xoán de Beluso",
+    "description": "Iglesia parroquial románica del siglo XII, centro espiritual de la aldea de Beluso. Edificio de gran valor histórico.",
     "category": "museo",
     "imgUrls": []
   },
@@ -314,7 +314,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.33297,
     "lng": -8.79815,
     "name": "Puerto de Beluso",
-    "description": "El puerto de Beluso es un pequeÃ±o puerto con zonas de amarre y parking gratuito y locales de hostelerÃ­a. Desde aquÃ­ se inicia una ruta por las calas de la zona y para un dÃ­a tranquilo incluso en dÃ­as nublados, es un b...",
+    "description": "El puerto de Beluso es un pequeño puerto con zonas de amarre y parking gratuito y locales de hostelería. Desde aquí se inicia una ruta por las calas de la zona y para un día tranquilo incluso en días nublados, es un b...",
     "category": "monumento",
     "imgUrls": ["assets/pois/Puerto Beluso/1.jpg", "assets/pois/Puerto Beluso/2.jpg", "assets/pois/Puerto Beluso/3.jpg"]
   },
@@ -323,7 +323,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.32831,
     "lng": -8.78420,
     "name": "Lonja de Bueu",
-    "description": "El puerto de Bueu, es una instalaciÃ³n naÃºtica que destaca principalmente como puerto pesquero. Es un punto de referencia clave para el turismo marinero y actividades deportivas de la zona.",
+    "description": "El puerto de Bueu, es una instalación naútica que destaca principalmente como puerto pesquero. Es un punto de referencia clave para el turismo marinero y actividades deportivas de la zona.",
     "category": "monumento",
     "imgUrls": ["assets/pois/Puerto de Bueu/1.jpg", "assets/pois/Puerto de Bueu/2.jpg", "assets/pois/Puerto de Bueu/3.jpg", "assets/pois/Puerto de Bueu/4.jpg"]
   },
@@ -334,7 +334,7 @@ export const DEFAULT_POIS: POI[] = [
     "lat": 42.3819,
     "lng": -8.9360,
     "name": "Isla de Ons",
-    "description": "Parte del Parque Nacional de las Islas AtlÃ¡nticas. Se puede visitar en barco desde el puerto de Bueu entre junio y septiembre.",
+    "description": "Parte del Parque Nacional de las Islas Atlánticas. Se puede visitar en barco desde el puerto de Bueu entre junio y septiembre.",
     "category": "parque",
     "imgUrls": []
   }
