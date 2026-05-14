@@ -15,7 +15,7 @@ export const DEFAULT_POIS: POI[] = [
       "assets/pois/Amiudina/image_7.jpg", "assets/pois/Amiudina/image_8.jpg",
       "assets/pois/Amiudina/image_9.jpg", "assets/pois/Amiudina/image_10.jpg",
       "assets/pois/Amiudina/image_12.jpg", "assets/pois/Amiudina/image_17.jpg",
-      "assets/pois/Amiudina/image_18.jpg", "assets/pois/Amiudina/image_22.jpg",
+      "assets/pois/Amiudina/image_18.jpg",
       "assets/pois/Amiudina/image_24.jpg", "assets/pois/Amiudina/image_25.jpg",
       "assets/pois/Amiudina/image_26.jpg", "assets/pois/Amiudina/image_27.jpg",
       "assets/pois/Amiudina/image_28.jpg", "assets/pois/Amiudina/image_29.jpg",
