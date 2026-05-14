@@ -1025,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (customRoutePoints.length > 1) {
       const routeNames = customRoutePoints.map((p, i) => `${i + 1}. ${p.name}`).join('\n');
       const distText = routeTotalDist?.innerText || '';
-      const shareText = `🗺 Mi Ruta en Beluso (${distText}):\n\n${routeNames}\n\n📱 AppBeluso - Tu guía de turismo`;
+      const shareText = `🗺 Mi Ruta en Beluso (${distText}):\n\n${routeNames}\n\n📱AppBeluso - Tu guía de turismo`;
       if (navigator.share) {
         try {
           await navigator.share({ title: 'Mi Ruta en Beluso', text: shareText });
@@ -1034,7 +1034,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           await navigator.clipboard.writeText(shareText);
           const originalText = btnShareRoute.innerText;
-          btnShareRoute.innerText = '✅ Copiado';
+          btnShareRoute.innerText = '✅Copiado';
           setTimeout(() => { btnShareRoute.innerText = originalText; }, 2000);
         } catch (_) {
           alert(shareText);
@@ -1165,7 +1165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="date">${ev.date}</span>
         <span class="name">${ev.name}</span>
         <span class="desc">${ev.description}</span>
-        <small class="hint"><span>📍 </span> Ver en Mapa</small>
+        <small class="hint"><span>📍</span> Ver en Mapa</small>
       `;
       card.onclick = () => {
         map.setView([ev.lat, ev.lng], 16, { animate: true });
@@ -1322,11 +1322,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mTemp) mTemp.innerText = `${Math.round(temp)}°`;
       if (mDesc) mDesc.innerText = desc;
       if (mIcon) {
-        let iconHTML = '<i class="fa-solid fa-sun" style="color: #FFD43B; filter: drop-shadow(0 0 10px rgba(255, 212, 59, 0.4));"></i>';
-        if (state === 'rain') iconHTML = '<i class="fa-solid fa-cloud-showers-heavy" style="color: #60a5fa; filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.4));"></i>';
-        else if (state === 'thunder') iconHTML = '<i class="fa-solid fa-cloud-bolt" style="color: #fbbf24; filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));"></i>';
-        else if (state === 'cloudy') iconHTML = '<i class="fa-solid fa-cloud" style="color: #cbd5e1; filter: drop-shadow(0 0 10px rgba(203, 213, 225, 0.4));"></i>';
-        mIcon.innerHTML = iconHTML;
+        let icon = '☀️';
+        if (state === 'rain') icon = '🌧️';
+        else if (state === 'thunder') icon = '⛈️';
+        else if (state === 'cloudy') icon = '🌦️';
+        mIcon.innerText = icon;
       }
 
       const vientoEl = document.getElementById('val-viento');
@@ -1348,14 +1348,14 @@ document.addEventListener('DOMContentLoaded', () => {
           const hTime = new Date(hEntry.time);
           const hTemp = Math.round(hEntry.data.instant.details.air_temperature);
           const hSym = hEntry.data.next_1_hours?.summary.symbol_code || "fair_day";
-          let hIconHTML = '<i class="fa-solid fa-sun" style="color: #FFD43B;"></i>';
-          if (hSym.includes('rain')) hIconHTML = '<i class="fa-solid fa-cloud-showers-heavy" style="color: #60a5fa;"></i>';
-          else if (hSym.includes('cloud')) hIconHTML = '<i class="fa-solid fa-cloud" style="color: #cbd5e1;"></i>';
+          let hIcon = '☀️';
+          if (hSym.includes('rain')) hIcon = '🌧️';
+          else if (hSym.includes('cloud')) hIcon = '🌦️';
 
           hHtml += `
             <div class="hourly-item ${i === 0 ? 'active' : ''}">
               <span class="time">${hTime.getHours()}:00</span>
-              <span style="font-size:18px; display: flex; align-items: center; justify-content: center;">${hIconHTML}</span>
+              <span style="font-size:20px;">${hIcon}</span>
               <span class="temp">${hTemp}°</span>
             </div>
           `;
@@ -1385,13 +1385,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const dTemp = Math.round(entry.data.instant.details.air_temperature);
           const dSym = entry.data.next_6_hours?.summary.symbol_code || "fair_day";
           const dayName = dDate.toLocaleDateString('es-ES', { weekday: 'short' });
-          let dIconHTML = '<i class="fa-solid fa-sun" style="color: #FFD43B;"></i>';
-          if (dSym.includes('rain')) dIconHTML = '<i class="fa-solid fa-cloud-showers-heavy" style="color: #60a5fa;"></i>';
-          else if (dSym.includes('cloud')) dIconHTML = '<i class="fa-solid fa-cloud" style="color: #cbd5e1;"></i>';
+          let dIcon = '☀️';
+          if (dSym.includes('rain')) dIcon = '🌧️';
+          else if (dSym.includes('cloud')) dIcon = '🌦️';
           dHtml += `
             <div class="daily-item">
               <span class="day">${dayName}</span>
-              <span style="font-size:20px; display: flex; align-items: center; justify-content: center; height: 30px;">${dIconHTML}</span>
+              <span style="font-size:24px;">${dIcon}</span>
               <span class="temp">${dTemp}°</span>
             </div>
           `;
